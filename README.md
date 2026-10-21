@@ -6,7 +6,7 @@ with characters in an 80 × 40 terminal window. The torus fits exactly inside
 the cube: its outer radius equals the cube's half-size, so it touches the
 centers of the cube's four side faces.
 
-▶ **[Watch the demo](demo.mov)**
+![ASCII torus rotating inside a wireframe cube](demo.gif)
 
 ## At a glance
 
@@ -25,11 +25,12 @@ centers of the cube's four side faces.
 ```text
 torus.cpp    The complete program
 demo.mov     Screen recording of the animation
+demo.gif     Animated preview used in this README
 README.md    This file
 .gitignore   Ignores compiled binaries and macOS debug files
 ```
 
-Only `torus.cpp` and `demo.mov` are included from the original project folder. The other
+Only `torus.cpp`, `demo.mov`, and `demo.gif` are included from the original project folder. The other
 files that may exist there (`main.cpp`, the compiled `main`/`torus`/`donut`
 binaries and the `.dSYM` folders) are a separate earlier demo / build
 artifacts and are not part of this repository.
