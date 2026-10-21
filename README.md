@@ -20,21 +20,6 @@ centers of the cube's four side faces.
 | Rendering | Orthographic projection, z-buffer, Lambert shading |
 | Animation | Continuous rotation, 10 ms delay per frame |
 
-## Repository contents
-
-```text
-torus.cpp    The complete program
-demo.mov     Screen recording of the animation
-demo.gif     Animated preview used in this README
-README.md    This file
-.gitignore   Ignores compiled binaries and macOS debug files
-```
-
-Only `torus.cpp`, `demo.mov`, and `demo.gif` are included from the original project folder. The other
-files that may exist there (`main.cpp`, the compiled `main`/`torus`/`donut`
-binaries and the `.dSYM` folders) are a separate earlier demo / build
-artifacts and are not part of this repository.
-
 ## Build and run
 
 ```bash
