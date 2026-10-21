@@ -1,8 +1,10 @@
-# ASCII Torus
+# ASCII Torus in a Cube
 
 A real-time 3D ASCII animation written in C++17. It renders a spinning torus
-(donut) surrounded by an independently spinning wireframe cube, entirely with
-characters in an 80 × 40 terminal window.
+(donut) **inscribed in an independently spinning wireframe cube**, entirely
+with characters in an 80 × 40 terminal window. The torus fits exactly inside
+the cube: its outer radius equals the cube's half-size, so it touches the
+centers of the cube's four side faces.
 
 ```text
 ....--.-....-----.-.....------.......-.-..-..
@@ -34,6 +36,7 @@ characters in an 80 × 40 terminal window.
 
 | Item | Value |
 | --- | --- |
+| Scene | A torus inscribed in a wireframe cube |
 | Language | C++17 |
 | Source | `torus.cpp` (single file, no dependencies) |
 | Output | 80 × 40 ASCII, ANSI escape codes |
@@ -141,6 +144,15 @@ normal stored for each edge point is `normalize(position)` — the direction
 from the origin, not a true cube-face normal. That is not physically correct,
 but because the cube is only a wireframe it gives a pleasant smooth lighting
 variation along the edges.
+
+**Inscribed in the cube.** The cube's half-size is `S = 11`, exactly the
+torus's outer radius `R + r = 11`, and both objects are centered at the
+origin. Looking down the z-axis, the torus's outer circle (radius 11) is
+inscribed in the cube's 22 × 22 square cross-section: it touches the centers
+of the four side faces at `(±11, 0, 0)` and `(0, ±11, 0)`. It does not touch
+the top and bottom faces, because the tube only reaches `z = ±4` while the
+cube reaches `z = ±11`. This is the sense in which the scene is a torus
+inscribed in a cube.
 
 ### Rotation
 
@@ -471,9 +483,11 @@ for (float t = -S; t <= S; t += 0.1f){
 * 12 edges × 220 samples = **2,640 cube points**, for a total of
   **18,516 vertices** in the scene.
 
-The cube's half-size equals the torus's outer radius, so the wireframe box
-just touches the torus's outer equator; the shared z-buffer sorts out which
-character is in front wherever they overlap.
+The cube's half-size equals the torus's outer radius (`S = 11 = R + r`), so
+the cube circumscribes the torus: the donut fits inside the wireframe box and
+its outer equator touches the centers of the four side faces. The shared
+z-buffer sorts out which character is in front wherever the two objects
+overlap.
 
 ### Frame state — lines 86–99
 
@@ -714,4 +728,4 @@ frame rate: they are fixed increments per rendered frame, not per second.
 The character ramp and the general "z-buffered ASCII 3D" idea are inspired by
 Andy Sloane's classic [`donut.c`](https://www.a1k0n.net/2011/07/20/donut-math.html).
 This implementation uses its own C++ structures, a parametric torus mesh, a
-separate wireframe cube, and a moving light.
+wireframe cube that circumscribes the torus, and a moving light.
