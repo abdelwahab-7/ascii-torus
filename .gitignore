@@ -1,0 +1,13 @@
+# Compiled binaries
+torus
+main
+donut
+a.out
+*.o
+*.out
+
+# macOS debug information
+*.dSYM/
+
+# macOS metadata
+.DS_Store
